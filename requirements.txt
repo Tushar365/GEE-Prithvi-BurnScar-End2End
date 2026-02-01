@@ -1,0 +1,23 @@
+# Core Geospatial Libraries
+earthengine-api
+geemap
+rasterio
+numpy
+pandas
+
+# Deep Learning Frameworks
+torch
+pytorch-lightning
+terratorch
+segmentation-models-pytorch
+
+# Analysis & Visualization
+matplotlib
+seaborn
+scikit-learn
+tqdm
+
+# Utilities & Notebook support
+ipywidgets
+gdown
+python-dotenv
