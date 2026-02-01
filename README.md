@@ -18,7 +18,7 @@ This repository bridges the gap between raw orbital data and deep-learning-based
 
 The core of this repository, including data generation, model specialization, and comparative analysis, was developed by **Tushar Thokdar**.
 
-### Key Contributions by Tushar Thokdar:
+### Tushar Thokdar's Algorithmic Contributions:
 
 - **End-to-End Pipeline**: Developed the complete workflow from raw data export to model evaluation.
 - **Delta Channel Algorithm**: Implemented a unique temporal stacking strategy that explicitly calculates the spectral difference between pre and post-fire states.
@@ -33,26 +33,26 @@ The system follows a rigorous four-stage pipeline from raw orbital data to valid
 
 ```mermaid
 graph TD
-    subgraph GEE["1. Data Acquisition (GEE)"]
+    subgraph GEE ["1. Data Acquisition (GEE)"]
         A[Sentinel-2 L2A] --> B[Spectral Band Selection]
         B --> C[DNBR Calculation & Export]
     end
 
-    subgraph Engineering["2. Data Engineering"]
+    subgraph Engineering ["2. Data Engineering"]
         C --> D[Reflectance Normalization]
         D --> E[Delta Channel Algorithm]
         E --> F[Multi-Temporal 13-Band Tiling]
     end
 
-    subgraph Model["3. Model Specialization"]
+    subgraph Model ["3. Model Specialization"]
         F --> G[Prithvi EO 2.0 Backbone]
         G --> H[UperNet Decoder]
         H --> I[Two-Stage Training]
     end
 
-    subgraph Eval["4. Evaluation & Comparison"]
+    subgraph Eval ["4. Evaluation & Comparison"]
         I --> J[Fine-Tuned Model]
-        K[Foundation Model] --> L[Comparison Framework]
+        K[Baseline Foundation Model] --> L[Comparison Framework]
         J --> L
         L --> M[Performance Benchmarks]
     end
@@ -103,12 +103,12 @@ graph TD
 
 The specialized fine-tuning process yields a massive performance boost over the base foundation model, particularly in identifying high-severity fire damage.
 
-| Metric          | Foundation Model | Fine-Tuned Model | Improvement |
-| :-------------- | :--------------- | :--------------- | :---------- |
-| **Accuracy**    | 35.86%           | 69.93%           | **+34.07%** |
-| **Macro F1**    | 0.1160           | 0.6218           | **+50.58%** |
-| **Weighted F1** | 0.2035           | 0.7015           | **+49.80%** |
-| **Burned F1**   | 0.0133           | 0.5553           | **+54.20%** |
+| Metric          | Baseline Model | Fine-Tuned Model | Improvement |
+| :-------------- | :------------- | :--------------- | :---------- |
+| **Accuracy**    | 35.86%         | 69.93%           | **+34.07%** |
+| **Macro F1**    | 0.1160         | 0.6218           | **+50.58%** |
+| **Weighted F1** | 0.2035         | 0.7015           | **+49.80%** |
+| **Burned F1**   | 0.0133         | 0.5553           | **+54.20%** |
 
 ### 1. Metric Comparison
 
