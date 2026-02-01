@@ -33,28 +33,28 @@ The system follows a rigorous four-stage pipeline from raw orbital data to valid
 
 ```mermaid
 graph TD
-    subgraph "1. Data Acquisition (GEE)"
+    subgraph GEE["1. Data Acquisition (GEE)"]
         A[Sentinel-2 L2A] --> B[Spectral Band Selection]
         B --> C[DNBR Calculation & Export]
     end
 
-    subgraph "2. Data Engineering"
+    subgraph Engineering["2. Data Engineering"]
         C --> D[Reflectance Normalization]
         D --> E[Delta Channel Algorithm]
         E --> F[Multi-Temporal 13-Band Tiling]
     end
 
-    subgraph "3. Model Specialization (Fine-Tuning)"
+    subgraph Model["3. Model Specialization"]
         F --> G[Prithvi EO 2.0 Backbone]
         G --> H[UperNet Decoder]
-        H --> I["Two-Stage Training (Freeze → Unfreeze)"]
+        H --> I[Two-Stage Training]
     end
 
-    subgraph "4. Evaluation & Comparison"
+    subgraph Eval["4. Evaluation & Comparison"]
         I --> J[Fine-Tuned Model]
-        K[Vanilla Foundation Model] --> L[Comparison Framework]
+        K[Foundation Model] --> L[Comparison Framework]
         J --> L
-        L --> M[Detailed Performance Benchmarks]
+        L --> M[Performance Benchmarks]
     end
 ```
 
@@ -164,4 +164,3 @@ Detailed breakdown of pixel-level classification accuracy for the specialized mo
 3.  **Dataset Preparation**: Run `Prithvi_data_generation.ipynb`.
 4.  **Fine-Tuning**: Execute `prithivi_finetune_with_delta.ipynb`.
 5.  **Comparison**: Use `Prithvi_model_comparison.ipynb` to verify results.
-# GEE-Prithvi-BurnScar-End2End
